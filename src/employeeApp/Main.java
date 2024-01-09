@@ -1,5 +1,12 @@
 package employeeApp;
 
+import employeeApp.enums.Plan;
+import employeeApp.model.Company;
+import employeeApp.model.Employee;
+import employeeApp.model.Healthplan;
+
+import java.util.Arrays;
+
 /**
  * Uygulamanın amacı Java'da nesne tabanlı programlamanın temellerinin oluşturulmasıdır.
  *
@@ -12,7 +19,40 @@ public class Main
      */
     private static void workWithData ()
     {
+        Healthplan plan1 = new Healthplan(1,"A Sigorta",Plan.ADVANCE);
+        Healthplan plan2= new Healthplan(1,"A Sigorta",Plan.MEDIUM);
 
+        System.out.println(plan1);
+        System.out.println(plan2);
+
+        String[] healtplans = new String[3];
+        healtplans[0] = plan1.getName();
+        healtplans[1] = plan2.getName();
+
+
+        Employee employee = new Employee(1,"Gökhan",
+                "asd@asd.com","1234",healtplans);
+
+        employee.addHealthplan(0,"C sigorta");
+        employee.addHealthplan(2,"A sigorta");
+        employee.addHealthplan(2,"C sigorta");
+        employee.addHealthplan(3,"T sigorta");
+
+
+        System.out.println(Arrays.toString(employee.getHealthPlans()));
+        Company company = new Company(1, "Workintech",
+                10000000, new String[]{"Dogancan Kınık", "Omer Fatih Tanriverdi", null});
+
+        company.addEmployee(0, "Abc x");
+        company.addEmployee(2, "Abc y");
+        company.addEmployee(-1, "Abc z");
+        company.addEmployee(5, "Ahmet Mehmet");
+
+        System.out.println(Arrays.toString(company.getDeveloperNames()));
+        System.out.println(company);
+
+        System.out.println(Double.MAX_VALUE);
+        System.out.println(Integer.MAX_VALUE);
     }
 
     /**
